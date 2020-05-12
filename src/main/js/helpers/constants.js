@@ -168,6 +168,12 @@ export default {
         top: -10,
         bottom: 20
     },
+    DEFAULT_TICKSCOUNT: 7,
+    TICKSCOUNT_MAXLIMIT: 19,
+    AXISRANGE_1: 20,
+    AXISRANGE_2: 50,
+    AXISRANGE_3: 100,
+    AXISRANGE_4: 500,
     TIMELINE_HEIGHT: 40,
     PIE_CHART_DEFAULT_HEIGHT: 250,
     DEFAULT_HEIGHT: 250,

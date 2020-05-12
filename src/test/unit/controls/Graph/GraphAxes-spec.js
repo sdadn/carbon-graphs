@@ -1,7 +1,9 @@
 "use strict";
 import Graph from "../../../../main/js/controls/Graph/index";
 import Line from "../../../../main/js/controls/Line/Line";
-import { AXES_ORIENTATION } from "../../../../main/js/helpers/constants";
+import constants, {
+    AXES_ORIENTATION
+} from "../../../../main/js/helpers/constants";
 import styles from "../../../../main/js/helpers/styles";
 import { getSVGAnimatedTransformList } from "../../../../main/js/helpers/transformUtils";
 import utils from "../../../../main/js/helpers/utils";
@@ -14,6 +16,11 @@ import {
     getAxes,
     getData
 } from "./helpers";
+import {
+    generateYAxesTickValues,
+    getTicksCountFromRange,
+    getAverageTicksCount
+} from "../../../../main/js/helpers/axis";
 
 describe("Graph - Axes", () => {
     let graph = null;
@@ -307,6 +314,100 @@ describe("Graph - Axes", () => {
         expect(
             fetchElementByClass(styles.axisX).getAttribute("aria-hidden")
         ).toBe("true");
+    });
+    describe("Axes ticks processing", () => {
+        beforeEach(() => {
+            graph.destroy();
+        });
+        it("Has correct output if ticksCount = TICKSCOUNT_MAXLIMIT", () => {
+            const lowerLimit = 0;
+            const upperLimit = 10;
+            const ticksCount = constants.TICKSCOUNT_MAXLIMIT;
+            expect(
+                generateYAxesTickValues(lowerLimit, upperLimit, ticksCount)
+                    .length
+            ).toEqual(ticksCount + 2);
+        });
+        it("Has correct output if ticksCount < TICKSCOUNT_MAXLIMIT - 1", () => {
+            const lowerLimit = 0;
+            const upperLimit = 10;
+            const ticksCount = constants.TICKSCOUNT_MAXLIMIT - 1;
+            expect(
+                generateYAxesTickValues(lowerLimit, upperLimit, ticksCount)
+                    .length
+            ).toEqual(ticksCount + 2);
+        });
+        it("Has correct output if ticksCount = 0", () => {
+            const lowerLimit = 0;
+            const upperLimit = 10;
+            const ticksCount = 0;
+            expect(
+                generateYAxesTickValues(lowerLimit, upperLimit, ticksCount)
+                    .length
+            ).toEqual(ticksCount + 2);
+        });
+        it("Uses absolute value if ticksCount is negative", () => {
+            const lowerLimit = 0;
+            const upperLimit = 10;
+            const ticksCount = -5;
+            expect(
+                generateYAxesTickValues(lowerLimit, upperLimit, ticksCount)
+                    .length
+            ).toEqual(Math.abs(ticksCount) + 2);
+        });
+        it("Returns correct value for AXISRANGE_1", () => {
+            const boundary = constants.AXISRANGE_1;
+            expect(getTicksCountFromRange(boundary - 1)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 4
+            );
+            expect(getTicksCountFromRange(boundary)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 4
+            );
+            expect(getTicksCountFromRange(boundary + 1)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 3
+            );
+        });
+        it("Returns correct value for AXISRANGE_2", () => {
+            const boundary = constants.AXISRANGE_2;
+            expect(getTicksCountFromRange(boundary - 1)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 3
+            );
+            expect(getTicksCountFromRange(boundary)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 3
+            );
+            expect(getTicksCountFromRange(boundary + 1)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 2
+            );
+        });
+        it("Returns correct value for AXISRANGE_3", () => {
+            const boundary = constants.AXISRANGE_3;
+            expect(getTicksCountFromRange(boundary - 1)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 2
+            );
+            expect(getTicksCountFromRange(boundary)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 2
+            );
+            expect(getTicksCountFromRange(boundary + 1)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 1
+            );
+        });
+        it("Returns correct value for AXISRANGE_4", () => {
+            const boundary = constants.AXISRANGE_4;
+            expect(getTicksCountFromRange(boundary - 1)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 1
+            );
+            expect(getTicksCountFromRange(boundary)).toEqual(
+                constants.DEFAULT_TICKSCOUNT - 1
+            );
+            expect(getTicksCountFromRange(boundary + 1)).toEqual(
+                constants.DEFAULT_TICKSCOUNT
+            );
+        });
+        it("Calculates the correct value when given Y and Y2 ranges", () => {
+            const rangeY = 32;
+            const rangeY2 = 250;
+            expect(getAverageTicksCount(rangeY, rangeY2)).toEqual(5);
+        });
     });
     describe("For timeseries type", () => {
         beforeEach(() => {
