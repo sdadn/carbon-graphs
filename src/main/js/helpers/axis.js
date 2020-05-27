@@ -207,7 +207,6 @@ const getAxesScale = (axis, scale, config) => {
         config.height,
         getAxisTickFormat(config.locale, config.axis.y.ticks.format),
         config.ticksCount,
-        hasY2Axis(config.axis)
     );
 
     if (hasY2Axis(config.axis)) {
