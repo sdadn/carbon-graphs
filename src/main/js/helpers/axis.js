@@ -206,7 +206,7 @@ const getAxesScale = (axis, scale, config) => {
         config.axis.y.domain,
         config.height,
         getAxisTickFormat(config.locale, config.axis.y.ticks.format),
-        config.ticksCount,
+        config.ticksCount
     );
 
     if (hasY2Axis(config.axis)) {
@@ -275,10 +275,19 @@ const processTickValues = (ticks) => {
  * @returns {number} returns number of ticks for that range, based on a predefined set
  */
 const getTicksCountFromRange = (range) => {
-    if (range <= constants.AXISRANGE_1) return constants.DEFAULT_TICKSCOUNT - 4;
-    if (range <= constants.AXISRANGE_2) return constants.DEFAULT_TICKSCOUNT - 3;
-    if (range <= constants.AXISRANGE_3) return constants.DEFAULT_TICKSCOUNT - 2;
-    if (range <= constants.AXISRANGE_4) return constants.DEFAULT_TICKSCOUNT - 1;
+    switch(true){
+        case (range <= constants.AXISRANGE_1): 
+            return constants.DEFAULT_TICKSCOUNT - 4;
+
+        case (range <= constants.AXISRANGE_2): 
+            return constants.DEFAULT_TICKSCOUNT - 3;
+
+        case (range <= constants.AXISRANGE_3): 
+            return constants.DEFAULT_TICKSCOUNT - 2;
+            
+        case (range <= constants.AXISRANGE_4): 
+            return constants.DEFAULT_TICKSCOUNT - 1;
+    }
     return constants.DEFAULT_TICKSCOUNT;
 };
 
