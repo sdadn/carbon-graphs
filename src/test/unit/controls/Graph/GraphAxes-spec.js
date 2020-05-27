@@ -355,8 +355,8 @@ describe("Graph - Axes", () => {
                     .length
             ).toEqual(Math.abs(ticksCount) + 2);
         });
-        it("Returns correct value for AXISRANGE_1", () => {
-            const boundary = constants.AXISRANGE_1;
+        it("Returns correct value for AXISRANGE_ONE", () => {
+            const boundary = constants.AXISRANGE_ONE;
             expect(getTicksCountFromRange(boundary - 1)).toEqual(
                 constants.DEFAULT_TICKSCOUNT - 4
             );
@@ -367,8 +367,8 @@ describe("Graph - Axes", () => {
                 constants.DEFAULT_TICKSCOUNT - 3
             );
         });
-        it("Returns correct value for AXISRANGE_2", () => {
-            const boundary = constants.AXISRANGE_2;
+        it("Returns correct value for AXISRANGE_TWO", () => {
+            const boundary = constants.AXISRANGE_TWO;
             expect(getTicksCountFromRange(boundary - 1)).toEqual(
                 constants.DEFAULT_TICKSCOUNT - 3
             );
@@ -379,8 +379,8 @@ describe("Graph - Axes", () => {
                 constants.DEFAULT_TICKSCOUNT - 2
             );
         });
-        it("Returns correct value for AXISRANGE_3", () => {
-            const boundary = constants.AXISRANGE_3;
+        it("Returns correct value for AXISRANGE_THREE", () => {
+            const boundary = constants.AXISRANGE_THREE;
             expect(getTicksCountFromRange(boundary - 1)).toEqual(
                 constants.DEFAULT_TICKSCOUNT - 2
             );
@@ -391,8 +391,8 @@ describe("Graph - Axes", () => {
                 constants.DEFAULT_TICKSCOUNT - 1
             );
         });
-        it("Returns correct value for AXISRANGE_4", () => {
-            const boundary = constants.AXISRANGE_4;
+        it("Returns correct value for AXISRANGE_FOUR", () => {
+            const boundary = constants.AXISRANGE_FOUR;
             expect(getTicksCountFromRange(boundary - 1)).toEqual(
                 constants.DEFAULT_TICKSCOUNT - 1
             );

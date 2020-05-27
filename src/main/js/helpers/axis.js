@@ -192,7 +192,7 @@ const getAxesScale = (axis, scale, config) => {
     );
 
     // If ticksCount is undefined or greater than TICKS_MAXCOUNT
-    // AND if the Y2 is visible, then utilize a default value for 
+    // AND if the Y2 is visible, then utilize a default value for
     // the ticksCount. This is based on the ranges of the Y & Y2 axes.
 
     if (
@@ -280,16 +280,16 @@ const processTickValues = (ticks) => {
  */
 const getTicksCountFromRange = (range) => {
     switch (true) {
-        case range <= constants.AXISRANGE_1:
+        case range <= constants.AXISRANGE_ONE:
             return constants.DEFAULT_TICKSCOUNT - 4;
 
-        case range <= constants.AXISRANGE_2:
+        case range <= constants.AXISRANGE_TWO:
             return constants.DEFAULT_TICKSCOUNT - 3;
 
-        case range <= constants.AXISRANGE_3:
+        case range <= constants.AXISRANGE_THREE:
             return constants.DEFAULT_TICKSCOUNT - 2;
 
-        case range <= constants.AXISRANGE_4:
+        case range <= constants.AXISRANGE_FOUR:
             return constants.DEFAULT_TICKSCOUNT - 1;
     }
     return constants.DEFAULT_TICKSCOUNT;
