@@ -191,6 +191,10 @@ const getAxesScale = (axis, scale, config) => {
         getAxisInfoOrientation(config.axis.x.orientation)
     );
 
+    // If ticksCount is undefined or greater than TICKS_MAXCOUNT
+    // AND if the Y2 is visible, then utilize a default value for 
+    // the ticksCount. This is based on the ranges of the Y & Y2 axes.
+
     if (
         (utils.isUndefined(config.ticksCount) ||
             config.ticksCount > constants.TICKSCOUNT_MAXLIMIT) &&
