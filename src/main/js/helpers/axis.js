@@ -192,7 +192,7 @@ const getAxesScale = (axis, scale, config) => {
     );
 
     if (
-        (utils.isUndefined(config.ticksCount)||
+        (utils.isUndefined(config.ticksCount) ||
             config.ticksCount > constants.TICKSCOUNT_MAXLIMIT) &&
         hasY2Axis(config.axis)
     )
