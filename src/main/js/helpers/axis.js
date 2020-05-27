@@ -275,17 +275,17 @@ const processTickValues = (ticks) => {
  * @returns {number} returns number of ticks for that range, based on a predefined set
  */
 const getTicksCountFromRange = (range) => {
-    switch(true){
-        case (range <= constants.AXISRANGE_1): 
+    switch (true) {
+        case range <= constants.AXISRANGE_1:
             return constants.DEFAULT_TICKSCOUNT - 4;
 
-        case (range <= constants.AXISRANGE_2): 
+        case range <= constants.AXISRANGE_2:
             return constants.DEFAULT_TICKSCOUNT - 3;
 
-        case (range <= constants.AXISRANGE_3): 
+        case range <= constants.AXISRANGE_3:
             return constants.DEFAULT_TICKSCOUNT - 2;
-            
-        case (range <= constants.AXISRANGE_4): 
+
+        case range <= constants.AXISRANGE_4:
             return constants.DEFAULT_TICKSCOUNT - 1;
     }
     return constants.DEFAULT_TICKSCOUNT;
@@ -324,6 +324,9 @@ const generateYAxesTickValues = (
 ) => {
     ticksCount = Math.abs(ticksCount);
     const tickValues = [];
+
+    // use the d3,js nice function to round off the upper and lower limits
+    // to multiples of 2, 5 or 10
     const [newLowerLimit, newUpperLimit] = d3
         .scaleLinear()
         .domain([lowerLimit, upperLimit])
