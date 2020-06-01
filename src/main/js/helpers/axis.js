@@ -227,9 +227,9 @@ const getAxesScale = (axis, scale, config) => {
 
 /**
  * Ticks can be formatted by passing the format string via input JSON.
- * * For Empty tick labels consumer would pass format as "" (blank)
- * * For formatting numbers (x,y,y2 axes ticks) use Python specifiers.
- * * Ticks can also be formatted for date time inputs.
+ * For Empty tick labels consumer would pass format as "" (blank)
+ * For formatting numbers (x,y,y2 axes ticks) use Python specifiers.
+ * Ticks can also be formatted for date time inputs.
  *
  * @private
  * @see https://docs.python.org/2/library/string.html#format-specification-mini-language
@@ -256,9 +256,9 @@ const getAxisTickFormat = (locale, format, type = AXIS_TYPE.DEFAULT) => {
 
 /**
  * Gets the tick values with correct format.
- * * If there are no tick values provided then null is returned
- * * If the ticks values are in a ISO8601 format then a date object is returned
- * * No processing is done, otherwise
+ * If there are no tick values provided then null is returned
+ * If the ticks values are in a ISO8601 format then a date object is returned
+ * No processing is done, otherwise
  *
  * @private
  * @param {Array} ticks - Array of values that represent the tick values
@@ -297,7 +297,7 @@ const getTicksCountFromRange = (range) => {
 
 /**
  * Gets average number of ticks to be used based on the Y and Y2 axes
- * * result from getTicksCountFromRange for Y and Y2 axes
+ * result from getTicksCountFromRange for Y and Y2 axes
  *
  * @private
  * @param {number} rangeY - Y axis range (upperLimit - lowerLimit)
@@ -313,7 +313,7 @@ const getAverageTicksCount = (rangeY, rangeY2) => {
 
 /**
  * Generates an array of tick values for to be used as the
- * * tick labels on the Y & Y2 axis.
+ * tick labels on the Y & Y2 axis.
  *
  * @private
  * @param {number} lowerLimit - Lower limit of the Y or Y2 Axis
@@ -352,8 +352,8 @@ const generateYAxesTickValues = (
 
 /**
  * Based on x axis orientation, sets the axis info row orientation.
- * * If x axis orientation is top, axis info row orientation is bottom.
- * * If x axis orientation is bottom, axis info row orientation is top.
+ * If x axis orientation is top, axis info row orientation is bottom.
+ * If x axis orientation is bottom, axis info row orientation is top.
  *
  * @private
  * @param {string} xAxisOrientation - x axis orientation
