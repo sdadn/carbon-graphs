@@ -279,20 +279,30 @@ const processTickValues = (ticks) => {
  * @returns {number} returns number of ticks for that range, based on a predefined set
  */
 const getTicksCountFromRange = (range) => {
+    let ticksCount = constants.DEFAULT_TICKSCOUNT;
+
     switch (true) {
         case range <= constants.AXISRANGE_ONE:
-            return constants.DEFAULT_TICKSCOUNT - 4;
+            ticksCount = constants.DEFAULT_TICKSCOUNT - 4;
+            break;
 
         case range <= constants.AXISRANGE_TWO:
-            return constants.DEFAULT_TICKSCOUNT - 3;
+            ticksCount = constants.DEFAULT_TICKSCOUNT - 3;
+            break;
 
         case range <= constants.AXISRANGE_THREE:
-            return constants.DEFAULT_TICKSCOUNT - 2;
+            ticksCount = constants.DEFAULT_TICKSCOUNT - 2;
+            break;
 
         case range <= constants.AXISRANGE_FOUR:
-            return constants.DEFAULT_TICKSCOUNT - 1;
+            ticksCount = constants.DEFAULT_TICKSCOUNT - 1;
+            break;
+
+        default:
+            ticksCount = constants.DEFAULT_TICKSCOUNT;
     }
-    return constants.DEFAULT_TICKSCOUNT;
+
+    return ticksCount;
 };
 
 /**
