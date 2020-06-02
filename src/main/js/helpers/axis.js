@@ -350,7 +350,9 @@ const generateYAxesTickValues = (
     tickValues.push(newLowerLimit);
     tickValues.push(newUpperLimit);
 
-    if (newLowerLimit < 0) tickValues.push(0);
+    if (newLowerLimit < 0) {
+        tickValues.push(0);
+    }
 
     const interval = (newUpperLimit - newLowerLimit) / (ticksCount + 1);
 
