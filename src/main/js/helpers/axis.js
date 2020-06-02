@@ -356,8 +356,9 @@ const generateYAxesTickValues = (
 
     const interval = (newUpperLimit - newLowerLimit) / (ticksCount + 1);
 
-    for (let index = 1; index <= ticksCount; index++)
+    for (let index = 1; index <= ticksCount; index++) {
         tickValues.push(newLowerLimit + interval * index);
+    }
 
     return tickValues;
 };
