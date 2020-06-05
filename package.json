@@ -171,9 +171,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "resolutions": {
-    "@babel/preset-env": "7.9.6"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/cerner/carbon-graphs.git"
